@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ConfigActivity">
+
+    <include
+        android:id="@+id/samara"
+        layout="@layout/toolbar" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="100dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="250dp"
+        app:layout_constraintBottom_toBottomOf="@+id/samara"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/samara">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardjohnson"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:cardCornerRadius="250dp">
+
+            <ImageView
+                android:id="@+id/imgProfilePicture"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unnamed"
+                tools:layout_editor_absoluteX="105dp"
+                tools:layout_editor_absoluteY="119dp" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/inputNameProfile"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Esse será seu nome de perfil"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="381dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="80dp"
+        android:text="A alteração da imagem e da foto são feitas automaticamente, continue usando clicando no botão de voltar no topo da tela."
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/inputNameProfile"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/inputNameProfile"
+        app:layout_constraintTop_toBottomOf="@+id/inputNameProfile" />
+
+    <ImageView
+        android:id="@+id/imgTakePicture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/w_tealgreen"
+        app:layout_constraintBottom_toTopOf="@+id/inputNameProfile"
+        app:layout_constraintStart_toStartOf="@+id/inputNameProfile"
+        app:srcCompat="@drawable/ic_baseline_camera_alt_24" />
+
+    <ImageView
+        android:id="@+id/imgGallery"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/w_tealgreen"
+        app:layout_constraintBottom_toTopOf="@+id/inputNameProfile"
+        app:layout_constraintEnd_toEndOf="@+id/inputNameProfile"
+        app:srcCompat="@drawable/ic_baseline_image_24" />
+
+    <Button
+        android:id="@+id/btnSaveName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/w_tealgreen"
+        android:text="Salvar Nome"
+        android:textColor="@color/w_white"
+        app:layout_constraintEnd_toEndOf="@+id/inputNameProfile"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/inputNameProfile"
+        app:layout_constraintTop_toBottomOf="@+id/inputNameProfile" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
