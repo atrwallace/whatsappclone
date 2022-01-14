@@ -11,8 +11,10 @@ import com.example.whatsappclone.R
 import com.example.whatsappclone.activities.LoginActivity
 import com.example.whatsappclone.adapters.ContactsAdapter
 import com.example.whatsappclone.config.ConfigFirebase
+import com.example.whatsappclone.config.UserCodec
 import com.example.whatsappclone.databinding.FragmentContactsBinding
 import com.example.whatsappclone.model.Users
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -26,6 +28,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
     lateinit var adapter: ContactsAdapter
     private lateinit var contactEventListener: ValueEventListener
     val useref: DatabaseReference = ConfigFirebase.getDBRef().child("usuarios")
+    lateinit var usernow: FirebaseUser
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,6 +39,7 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         setHasOptionsMenu(true)
         adapter = activity?.let { ContactsAdapter(lista, it) }!!
         contactRecycler()
+        usernow = UserCodec.getUserData()
         return view
     }
 
@@ -47,10 +51,13 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         super.onStart()
         recoverContact()
     }
+
     override fun onStop() {
         super.onStop()
         useref.removeEventListener(contactEventListener)
+        lista.clear()
     }
+
     fun contactRecycler() {
         val layoutmanager: RecyclerView.LayoutManager = LinearLayoutManager(activity)
         val rvContactList = binding.recyclerViewContactList
@@ -59,24 +66,23 @@ class ContactsFragment : Fragment(R.layout.fragment_contacts) {
         rvContactList.adapter = adapter
     }
 
-
     fun recoverContact() {
 
         contactEventListener = useref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (dadosUser in snapshot.children) {
-
                     val users = dadosUser.getValue(Users::class.java)
-                    lista.add(users!!)
+                    if (!usernow.email.equals(users?.email)) {
+                        lista.add(users!!)
+                    } else {
+                    }
                 }
                 adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
-
     }
+
 }

@@ -4,6 +4,7 @@ import com.example.whatsappclone.config.Base64Custom
 import com.example.whatsappclone.config.ConfigFirebase
 import com.example.whatsappclone.config.UserCodec
 import com.google.firebase.database.Exclude
+import java.io.Serializable
 
 class Users(
     var nome: String = "",
@@ -11,7 +12,7 @@ class Users(
     var foto: String = "",
     @get: Exclude var senha: String = "",
     @get: Exclude var idUser: String = ""
-) {
+): Serializable {
 
     fun salvar() {
         val db = ConfigFirebase.getDBRef()
