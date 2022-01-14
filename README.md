@@ -1,8 +1,8 @@
 ## WhatsApp Clone
 Cloning Whatsapp App for Learning purposes
 
-#Screenshots
-![Mainr](https://i.imgur.com/huB8h2C.png) ![Mainr2](https://i.imgur.com/zph8V1q.png)
+## Screenshots
+![Mainr](https://i.imgur.com/huB8h2C.png) ![Mainr2](https://i.imgur.com/undeol2.png)
 
 ## Technology
 ### The project was made using these technologies
